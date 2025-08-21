@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersécurité et Souveraineté Numérique - RDC</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .presentation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .slide {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .slide:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4);
+        }
+
+        .slide-number {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ffd700, #ffed4a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #64b5f6;
+            border-left: 4px solid #ff6b35;
+            padding-left: 15px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            margin-bottom: 12px;
+            color: #81c784;
+        }
+
+        .objective {
+            background: rgba(255, 107, 53, 0.15);
+            border-left: 4px solid #ff6b35;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .content {
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #42a5f5, #1e88e5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 20px auto;
+            box-shadow: 0 10px 25px rgba(66, 165, 245, 0.3);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .comparison-table th {
+            background: rgba(255, 107, 53, 0.3);
+            font-weight: bold;
+        }
+
+        .risk-level {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .risk-high { background: #f44336; color: white; }
+        .risk-medium { background: #ff9800; color: white; }
+        .risk-low { background: #4caf50; color: white; }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: scale(1.05);
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.2);
+            height: 20px;
+            border-radius: 10px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4caf50, #8bc34a);
+            border-radius: 10px;
+            transition: width 2s ease;
+        }
+
+        .quote {
+            background: rgba(255, 255, 255, 0.08);
+            border-left: 4px solid #ffd700;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-style: italic;
+        }
+
+        .navigation {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            margin: 0 5px;
+            border-radius: 25px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .architecture-diagram {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .layer {
+            background: rgba(66, 165, 245, 0.2);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #42a5f5;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide {
+            animation: slideIn 0.6s ease-out;
+        }
+
+        .flag-colors {
+            background: linear-gradient(90deg, #0072ce 33%, #ffd700 33% 66%, #ce1126 66%);
+            height: 5px;
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navigation">
+        <button class="nav-btn" onclick="scrollToSlide(1)">Début</button>
+        <button class="nav-btn" onclick="scrollToSlide(8)">Milieu</button>
+        <button class="nav-btn" onclick="scrollToSlide(17)">Fin</button>
+    </div>
+
+    <div class="presentation-container">
+        <!-- Slide 1: Titre de la présentation -->
+        <div class="slide" id="slide-1">
+            <div class="slide-number">1</div>
+            <div class="flag-colors"></div>
+            <h1>🛡️ Cybersécurité et Souveraineté Numérique</h1>
+            <div style="text-align: center; margin: 30px 0;">
+                <h2 style="border: none; color: #ffd700; margin-bottom: 10px;">République Démocratique du Congo</h2>
+                <p style="font-size: 1.3em; color: #81c784;">Stratégies de Protection des Infrastructures Critiques</p>
+            </div>
+            <div class="objective">
+                <strong>Objectif :</strong> Introduction officielle à la cybersécurité diplomatique et étatique en RDC
+            </div>
+        </div>
+
+        <!-- Slide 2: Contexte géopolitique et numérique -->
+        <div class="slide" id="slide-2">
+            <div class="slide-number">2</div>
+            <h2>🌍 Contexte Géopolitique et Numérique</h2>
+            <div class="objective">
+                <strong>Objectif :</strong> Situer la RDC dans l'environnement cyber mondial
+            </div>
+            <div class="content">
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="icon">🏛️</div>
+                        <h3>Position Stratégique</h3>
+                        <p>Cœur de l'Afrique centrale, ressources minières critiques</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">💎</div>
+                        <h3>Richesses Naturelles</h3>
+                        <p>Cobalt, coltan, cuivre - essentiels pour les technologies</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">📱</div>
+                        <h3>Transformation Numérique</h3>
+                        <p>80M d'habitants, adoption croissante du mobile</p>
+                    </div>
+                </div>
+                <div class="quote">
+                    "La RDC détient 60% des réserves mondiales de cobalt, métal indispensable aux batteries et technologies modernes"
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Enjeux diplomatiques et numériques -->
+        <div class="slide" id="slide-3">
+            <div class="slide-number">3</div>
+            <h2>🎯 Enjeux Diplomatiques et Numériques</h2>
+            <div class="objective">
+                <strong>Objectif :</strong> Montrer ce qui est en jeu pour la RDC
+            </div>
+            <div class="content">
+                <h3>Enjeux Majeurs :</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                        <strong>🔐 Souveraineté Numérique :</strong> Contrôle des données et infrastructures nationales
+                    </li>
+                    <li style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                        <strong>🏭 Sécurité Économique :</strong> Protection des secteurs miniers et énergétiques
+                    </li>
+                    <li style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                        <strong>🌐 Diplomatie Digitale :</strong> Influence géopolitique dans l'espace cyber
+                    </li>
+                    <li style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                        <strong>⚖️ Stabilité Régionale :</strong> Prévention des conflits numériques transfrontaliers
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 4: Risques spécifiques en RDC -->
+        <div class="slide" id="slide-4">
+            <div class="slide-number">4</div>
+            <h2>⚠️ Risques Spécifiques en RDC</h2>
+            <div class="objective">
+                <strong>Objectif :</strong> Identifier les menaces concrètes
+            </div>
+            <div class="content">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Type de Risque</th>
+                            <th>Niveau</th>
+                            <th>Impact Potentiel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Espionnage industriel (mines)</td>
+                            <td><span class="risk-level risk-high">ÉLEVÉ</span></td>
+                            <td>Vol de secrets commerciaux, déstabilisation économique</td>
+                        </tr>
+                        <tr>
+                            <td>Cyberattaques sur infrastructures</td>
+                            <td><span class="risk-level risk-high">ÉLEVÉ</span></td>
+                            <td>Coupures électriques, paralysie des services</td>
+                        </tr>
+                        <tr>
+                            <td>Ingérence électorale</td>
+                            <td><span class="risk-level risk-medium">MOYEN</span></td>
+                            <td>Désinformation, manipulation de l'opinion</td>
+                        </tr>
+                        <tr>
+                            <td>Ransomware gouvernemental</td>
+                            <td><span class="risk-level risk-medium">MOYEN</span></td>
+                            <td>Paralysie administrative, perte de données</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 5: Attaques marquantes en Afrique -->
+        <div class="slide" id="slide-5">
+            <div class="slide-number">5</div>
+            <h2>📊 Attaques Marquantes en Afrique</h2>
+            <div class="objective">
+                <strong>Objectif :</strong> Illustrer par des exemples régionaux
+            </div>
+            <div class="content">
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>🇿🇦 Afrique du Sud 2021</h3>
+                        <p><strong>Transnet (ports)</strong></p>
+                        <p>Ransomware paralysant 60% du trafic portuaire</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🇳🇬 Nigeria 2022</h3>
+                        <p><strong>Secteur bancaire</strong></p>
+                        <p>Attaques DDoS contre 5 banques majeures</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🇰🇪 Kenya 2023</h3>
+                        <p><strong>Services gouvernementaux</strong></p>
+                        <p>Violation de données de 5M de citoyens</p>
+                    </div>
+                </div>
+                <div class="quote">
+                    "Les attaques cyber en Afrique ont augmenté de 230% entre 2021 et 2023" - Rapport Kaspersky
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Espionnage étatique et diplomatique -->
+        <div class="slide" id="slide-6">
+            <div class="slide-number">6</div>
+            <h2>🕵️ Espionnage Étatique et Diplomatique</h2>
+            <div class="objective">
+                <strong>Objectif :</strong> Cas concrets (Volt Typhoon, RedDelta...)
+            </div>
+            <div class="content">
+                <h3>Groupes APT Actifs :</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>⚡ Volt Typhoon</h3>
+                        <p><strong>Origine :</strong> Chine</p>
+                        <p><strong>Cibles :</strong> Infrastructures critiques</p>
+                        <p><strong>Méthodes :</strong> Living-off-the-land</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🔺 RedDelta</h3>
+                        <p><strong>Origine :</strong> Chine</p>
+                        <p><strong>Cibles :</strong> Secteur Vatican/Religieux</p>
+                        <p><strong>Méthodes :</strong> Spear-phishing avancé</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🐻 APT28/Fancy Bear</h3>
+                        <p><strong>Origine :</strong> Russie (GRU)</p>
+                        <p><strong>Cibles :</strong> Ambassades, diplomates</p>
+                        <p><strong>Méthodes :</strong> Zero-day exploits</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Techniques d'intrusion avancées -->
+        <div class="slide" id="slide-7">
+            <div class="slide-number">7</div>
+            <h2>🔧 Techniques d'Intrusion Avancées</h2>
+            <div class="objective">
+                <strong>Objectif :</strong> Comprendre les méthodes utilisées
+            </div>
+            <div class="content">
+                <div class="architecture-diagram">
+                    <h3>Chaîne d'Attaque Typique :</h3>
+                    <div class="layer">
+                        <strong>1. Reconnaissance</strong> - OSINT, scan de vulnérabilités
+                    </div>
+                    <div class="layer">
+                        <strong>2. Accès Initial</strong> - Phishing, exploits zero-day
+                    </div>
+                    <div class="layer">
+                        <strong>3. Persistence</strong> - Backdoors, comptes privilégiés
+                    </div>
+                    <div class="layer">
+                        <strong>4. Escalation</strong> - Élévation de privilèges
+                    </div>
+                    <div class="layer">
+                        <strong>5. Mouvement Latéral</strong> - Pivot vers autres systèmes
+                    </div>
+                    <div class="layer">
+                        <strong>6. Exfiltration</strong> - Vol de données sensibles
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Failles des systèmes traditionnels -->
+        <div class="slide" id="slide-8">
+            <div class="slide-number">8</div>
+            <h2>❌ Failles des Systèmes Traditionnels</h2>
+            <div class="objective">
+                <strong>Objectif :</strong> Pourquoi les outils classiques échouent
+            </div>
+            <div class="content">
+                <h3>Limitations des Approches Classiques :</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin: 15px 0; padding: 15px; background: rgba(244,67,54,0.2); border-radius: 8px;">
+                        <strong>🐌 Détection Réactive :</strong> Les antivirus traditionnels ne détectent que les menaces connues
+                    </li>
+                    <li style="margin: 15px 0; padding: 15px; background: rgba(244,67,54,0.2); border-radius: 8px;">
+                        <strong>🔍 Vision Cloisonnée :</strong> Manque de corrélation entre les événements
+                    </li>
+                    <li style="margin: 15px 0; padding: 15px; background: rgba(244,67,54,0.2); border-radius: 8px;">
+                        <strong>⏰ Temps de Réponse :</strong> Détection moyenne : 287 jours (IBM Security)
+                    </li>
+                    <li style="margin: 15px 0; padding: 15px; background: rgba(244,67,54,0.2); border-radius: 8px;">
+                        <strong>👥 Dépendance Humaine :</strong> Analyse manuelle trop lente face aux APT
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 9: Logiciels vulnérables en RDC -->
+        <div class="slide" id="slide-9">
+            <div class="slide-number">9</div>
+            <h2>💻 Logiciels Vulnérables en RDC</h2>
+            <div class="objective">
+                <strong>Objectif :</strong> Liste des outils à risque
+            </div>
+            <div class="content">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Logiciel</th>
+                            <th>Usage en RDC</th>
+                            <th>Vulnérabilités Critiques</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Windows Server 2012/2016</td>
+                            <td>Administrations publiques</td>
+                            <td>SMBGhost, BlueKeep, EternalBlue</td>
+                        </tr>
+                        <tr>
+                            <td>Microsoft Exchange</td>
+                            <td>Emails gouvernementaux</td>
+                            <td>ProxyLogon, ProxyShell</td>
+                        </tr>
+                        <tr>
+                            <td>Apache/Nginx</td>
+                            <td>Sites web institutionnels</td>
+                            <td>Log4Shell, Path Traversal</td>
+                        </tr>
+                        <tr>
+                            <td>Oracle Database</td>
+                            <td>Systèmes financiers</td>
+                            <td>Privilege escalation, SQL injection</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 10: Menaces sur les fournisseurs cloud -->
+        <div class="slide" id="slide-10">
+            <div class="slide-number">10</div>
+            <h2>☁️ Menaces sur les Fournisseurs Cloud</h2>
+            <div class="objective">
+                <strong>Objectif :</strong> Stratégies des attaquants
+            </div>
+            <div class="content">
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="icon">🎭</div>
+                        <h3>Attaques Supply Chain</h3>
+                        <p>Compromission des fournisseurs tiers</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">🔑</div>
+                        <h3>Credential Stuffing</h3>
+                        <p>Réutilisation de mots de passe volés</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">🌊</div>
+                        <h3>Cloud Hopping</h3>
+                        <p>Mouvement entre environnements cloud</p>
+                    </div>
+                </div>
+                <div class="quote">
+                    "95% des violations cloud sont dues à des erreurs de configuration" - Gartner 2023
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Ciblage des missions diplomatiques -->
+        <div class="slide" id="slide-11">
+            <div class="slide-number">11</div>
+            <h2>🏛️ Ciblage des Missions Diplomatiques</h2>
+            <div class="objective">
+                <strong>Objectif :</strong> Raisons géopolitiques du ciblage
+            </div>
+            <div class="content">
+                <h3>Pourquoi les Ambassades sont Ciblées :</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin: 15px 0; padding: 15px; background: rgba(255,193,7,0.2); border-radius: 8px;">
+                        <strong>📊 Intelligence Économique :</strong> Accords commerciaux, négociations minières
+                    </li>
+                    <li style="margin: 15px 0; padding: 15px; background: rgba(255,193,7,0.2); border-radius: 8px;">
+                        <strong>🗳️ Ingérence Politique :</strong> Influence sur les processus démocratiques
+                    </li>
+                    <li style="margin: 15px 0; padding: 15px; background: rgba(255,193,7,0.2); border-radius: 8px;">
+                        <strong>🤝 Relations Bilatérales :</strong> Position de la RDC sur les enjeux internationaux
+                    </li>
+                    <li style="margin: 15px 0; padding: 15px; background: rgba(255,193,7,0.2); border-radius: 8px;">
+                        <strong>🛡️ Secrets Défense :</strong> Capacités militaires et stratégies sécuritaires
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 12: Protection contre les ransomwares -->
+        <div class="slide" id="slide-12">
+            <div class="slide-number">12</div>
+            <h2>🛡️ Protection contre les Ransomwares</h2>
+            <div class="objective">
+                <strong>Objectif :</strong> Mesures concrètes recommandées
+            </div>
+            <div class="content">
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>🔄 Sauvegarde 3-2-1</h3>
+                        <p>3 copies, 2 supports différents, 1 hors ligne</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🚫 Zero Trust</h3>
+                        <p>Vérification continue de tous les accès</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🎓 Formation</h3>
+                        <p>Sensibilisation du personnel aux menaces</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: Systèmes adaptés à la RDC -->
+        <div class="slide" id="slide-13">
+            <div class="slide-number">13</div>
+            <h2>🎯 Systèmes Adaptés à la RDC</h2>
+            <div class="objective">
+                <strong>Objectif :</strong> Comparatif des solutions
+            </div>
+            <div class="content">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Critère</th>
+                            <th>Solution Locale</th>
+                            <th>Cloud International</th>
+                            <th>Hybride Souverain</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Souveraineté des données</td>
+                            <td><span style="color: #4caf50;">✓ Excellente</span></td>
+                            <td><span style="color: #f44336;">✗ Faible</span></td>
+                            <td><span style="color: #ff9800;">~ Modérée</span></td>
+                        </tr>
+                        <tr>
+                            <td>Coût d'implémentation</td>
+                            <td><span style="color: #f44336;">✗ Élevé</span></td>
+                            <td><span style="color: #4caf50;">✓ Modéré</span></td>
+                            <td><span style="color: #ff9800;">~ Moyen</span></td>
+                        </tr>
+                        <tr>
+                            <td>Expertise technique</td>
+                            <td><span style="color: #f44336;">✗ Limitée</span></td>
+                            <td><span style="color: #4caf50;">✓ Disponible</span></td>
+                            <td><span style="color: #ff9800;">~ Partagée</span></td>
+                        </tr>
+                        <tr>
+                            <td>Temps de réponse</td>
+                            <td><span style="color: #4caf50;">✓ Immédiat</span></td>
+                            <td><span style="color: #ff9800;">~ Variable</span></td>
+                            <td><span style="color: #4caf50;">✓ Rapide</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 14: Architecture du système autonome -->
+        <div class="slide" id="slide-14">
+            <div class="slide-number">14</div>
+            <h2>🏗️ Architecture du Système Autonome</h2>
+            <div class="objective">
+                <strong>Objectif :</strong> Présentation technique du modèle proposé
+            </div>
+            <div class="content">
+                <div class="architecture-diagram">
+                    <h3>Architecture Système Proposée :</h3>
+                    <div class="layer" style="background: rgba(76, 175, 80, 0.2); border-left-color: #4caf50;">
+                        <strong>🧠 Couche IA/ML</strong> - Détection comportementale, analyse prédictive
+                    </div>
+                    <div class="layer" style="background: rgba(33, 150, 243, 0.2); border-left-color: #2196f3;">
+                        <strong>🔍 Couche SIEM/XDR</strong> - Corrélation d'événements, orchestration
+                    </div>
+                    <div class="layer" style="background: rgba(255, 152, 0, 0.2); border-left-color: #ff9800;">
+                        <strong>📊 Couche Collecte</strong> - Logs, métriques, flux réseau
+                    </div>
+                    <div class="layer" style="background: rgba(156, 39, 176, 0.2); border-left-color: #9c27b0;">
+                        <strong>🌐 Couche Infrastructure</strong> - Serveurs locaux, cloud hybride
+                    </div>
+                </div>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>⚡ Détection Temps Réel</h3>
+                        <p>< 5 minutes pour les menaces critiques</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🤖 IA Souveraine</h3>
+                        <p>Modèles entraînés sur données locales</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🔄 Auto-Apprentissage</h3>
+                        <p>Adaptation continue aux nouvelles menaces</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 15: Étapes d'implémentation -->
+        <div class="slide" id="slide-15">
+            <div class="slide-number">15</div>
+            <h2>📈 Étapes d'Implémentation</h2>
+            <div class="objective">
+                <strong>Objectif :</strong> Plan de déploiement progressif
+            </div>
+            <div class="content">
+                <h3>Roadmap sur 24 Mois :</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>Phase 1 (0-6 mois)</h3>
+                        <div class="icon">🔍</div>
+                        <p><strong>Audit & Préparation</strong></p>
+                        <ul style="text-align: left; margin-top: 10px;">
+                            <li>Audit de sécurité complet</li>
+                            <li>Formation des équipes</li>
+                            <li>Choix des technologies</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Phase 2 (6-12 mois)</h3>
+                        <div class="icon">⚙️</div>
+                        <p><strong>Déploiement Pilote</strong></p>
+                        <ul style="text-align: left; margin-top: 10px;">
+                            <li>Installation sur sites critiques</li>
+                            <li>Configuration SIEM/XDR</li>
+                            <li>Intégration des sources</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Phase 3 (12-18 mois)</h3>
+                        <div class="icon">🚀</div>
+                        <p><strong>Extension Nationale</strong></p>
+                        <ul style="text-align: left; margin-top: 10px;">
+                            <li>Déploiement généralisé</li>
+                            <li>Optimisation IA/ML</li>
+                            <li>Automatisation SOC</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Phase 4 (18-24 mois)</h3>
+                        <div class="icon">🎯</div>
+                        <p><strong>Maturité Opérationnelle</strong></p>
+                        <ul style="text-align: left; margin-top: 10px;">
+                            <li>Threat Hunting avancé</li>
+                            <li>Coopération internationale</li>
+                            <li>Centre d'excellence cyber</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 16: Comparatif SIEM/XDR -->
+        <div class="slide" id="slide-16">
+            <div class="slide-number">16</div>
+            <h2>⚔️ Comparatif SIEM/XDR</h2>
+            <div class="objective">
+                <strong>Objectif :</strong> Tableau comparatif des outils
+            </div>
+            <div class="content">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Critère</th>
+                            <th>SIEM Traditionnel</th>
+                            <th>XDR Moderne</th>
+                            <th>Recommandation RDC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Périmètre de détection</strong></td>
+                            <td>Logs centralisés</td>
+                            <td>Multi-vecteurs intégrés</td>
+                            <td>XDR + SIEM hybride</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Intelligence artificielle</strong></td>
+                            <td>Limitée</td>
+                            <td>Native et avancée</td>
+                            <td>IA souveraine adaptée</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Temps de réponse</strong></td>
+                            <td>Heures/Jours</td>
+                            <td>Minutes</td>
+                            <td>< 5 minutes (critiques)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Complexité opérationnelle</strong></td>
+                            <td>Élevée</td>
+                            <td>Modérée</td>
+                            <td>Simplifiée avec formation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Coût total (3 ans)</strong></td>
+                            <td>$500K - $1M</td>
+                            <td>$800K - $1.5M</td>
+                            <td>$600K - $1.2M optimisé</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Souveraineté</strong></td>
+                            <td>Configurable</td>
+                            <td>Variable selon fournisseur</td>
+                            <td>Maximale (cloud local)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="quote">
+                    "L'approche XDR réduit de 65% le temps moyen de détection et de 80% le temps de réponse" - Forrester Research
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 17: Conclusion stratégique -->
+        <div class="slide" id="slide-17">
+            <div class="slide-number">17</div>
+            <h2>🎯 Conclusion Stratégique</h2>
+            <div class="objective">
+                <strong>Objectif :</strong> Appel à l'action pour la souveraineté numérique
+            </div>
+            <div class="content">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <h3 style="color: #ffd700; font-size: 1.6em;">La Cybersécurité : Un Impératif de Souveraineté</h3>
+                </div>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="icon">⚡</div>
+                        <h3>Urgence d'Action</h3>
+                        <p>Les menaces évoluent plus vite que nos défenses traditionnelles</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">🛡️</div>
+                        <h3>Approche Intégrée</h3>
+                        <p>SIEM + XDR + IA pour une protection complète</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">🇨🇩</div>
+                        <h3>Souveraineté Numérique</h3>
+                        <p>Contrôle des données et infrastructures nationales</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">🤝</div>
+                        <h3>Coopération Régionale</h3>
+                        <p>Partage de renseignements cyber avec l'Afrique</p>
+                    </div>
+                </div>
+
+                <div class="quote" style="background: linear-gradient(45deg, rgba(255,215,0,0.2), rgba(255,193,7,0.2)); border-left-color: #ffd700;">
+                    <strong>"La cybersécurité n'est pas un coût, c'est un investissement dans l'avenir numérique de la RDC"</strong>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px; padding: 25px; background: rgba(76,175,80,0.2); border-radius: 15px;">
+                    <h3 style="color: #4caf50; margin-bottom: 15px;">🚀 Prochaines Étapes Recommandées</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
+                        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px;">
+                            <strong>1. Audit Immédiat</strong><br>
+                            <small>Évaluation complète des vulnérabilités</small>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px;">
+                            <strong>2. Budget Cyber</strong><br>
+                            <small>Allocation de 3% du budget IT</small>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px;">
+                            <strong>3. Formation</strong><br>
+                            <small>Programme national de sensibilisation</small>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px;">
+                            <strong>4. Partenariats</strong><br>
+                            <small>Coopération technique internationale</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px; font-size: 1.2em; color: #64b5f6;">
+                    <strong>🛡️ Ensemble pour une RDC cyber-résiliente 🛡️</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function scrollToSlide(slideNumber) {
+            const slide = document.getElementById('slide-' + slideNumber);
+            if (slide) {
+                slide.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Animation des barres de progression
+        window.addEventListener('load', function() {
+            const progressBars = document.querySelectorAll('.progress-fill');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 1000);
+            });
+        });
+
+        // Animation d'apparition des slides
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.slide').forEach(slide => {
+            observer.observe(slide);
+        });
+
+        // Effet de particules pour le background
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = '2px';
+            particle.style.height = '2px';
+            particle.style.background = 'rgba(255,255,255,0.3)';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = '-5px';
+            particle.style.zIndex = '1';
+            
+            document.body.appendChild(particle);
+            
+            const animationDuration = Math.random() * 3000 + 2000;
+            particle.animate([
+                { transform: 'translateY(-10px)', opacity: 0 },
+                { transform: 'translateY(20px)', opacity: 1 },
+                { transform: `translateY(${window.innerHeight + 10}px)`, opacity: 0 }
+            ], {
+                duration: animationDuration,
+                easing: 'linear'
+            }).onfinish = () => particle.remove();
+        }
+
+        // Créer des particules périodiquement
+        setInterval(createParticle, 300);
+
+        // Smooth scrolling pour la navigation
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1.1)';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>
